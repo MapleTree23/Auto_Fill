@@ -1,0 +1,57 @@
+#__next {
+    height: 100%;
+}
+
+:root {
+    --primary: #005BFF;
+    --secondary: #002f85;
+}
+
+@font-face {
+    font-family: 'HK Grotesk';
+    src: url('/fonts/HKGrotesk-Regular.eot');
+    src: local('/fonts/HK Grotesk Regular'), local('/fonts/HKGrotesk-Regular'),
+        url('/fonts/HKGrotesk-Regular.eot?#iefix') format('embedded-opentype'),
+        url('/fonts/HKGrotesk-Regular.woff2') format('woff2'),
+        url('/fonts/HKGrotesk-Regular.woff') format('woff'),
+        url('/fonts/HKGrotesk-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Circular STD';
+    src: url('/fonts/Circular\ Std\ Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Circular STD';
+    src: url('/fonts/Circular\ Std\ Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Circular STD';
+    src: url('/fonts/Circular\ Std\ Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Circular STD';
+    src: url('/fonts/Circular\ Std\ Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+.row{
+    display: flex;
+}
+.justify-space-between{
+    justify-content: space-between;
+}
+.justify-space-around{
+    justify-content: space-around;
+}
