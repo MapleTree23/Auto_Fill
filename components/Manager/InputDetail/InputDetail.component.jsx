@@ -78,7 +78,16 @@ function InputDetail({info}){
                             )
                         })}
                         <Style.TableRow>
-                                <Style.TableItem><Style.TableInput ref={inputRef} type="text" value={tempRow.task} name="task" onChange={change}/></Style.TableItem>
+                                <Style.TableItem><Style.TableInput ref={inputRef} list="tasks" selectBoxOptions="Canada;Denmark;Finland;Germany;Mexico" value={tempRow.task} name="task" onChange={change}/></Style.TableItem>
+                                <datalist id="tasks">
+                                    {
+                                        tableInfo.map((item,index)=>{
+                                            return(
+                                                <option value={item.task}/>
+                                            )
+                                        })
+                                    }
+                                </datalist>
                                 <Style.TableItem><Style.TableInput type="text" value={tempRow.item}  name="item" onChange={change}/></Style.TableItem>
                                 <Style.TableItem><Style.TableInput type="text" value={tempRow.start} name="start" onChange={change}/></Style.TableItem>
                                 <Style.TableItem><Style.TableInput type="text" value={tempRow.end} name="end" onChange={change}/></Style.TableItem>
