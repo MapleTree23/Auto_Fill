@@ -83,7 +83,7 @@ function InputDetail({info}){
                                     {
                                         tableInfo.map((item,index)=>{
                                             return(
-                                                <option value={item.task}/>
+                                                <option key={index} value={item.task}/>
                                             )
                                         })
                                     }

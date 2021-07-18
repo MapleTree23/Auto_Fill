@@ -7,9 +7,7 @@ export const Style = {
     flex-direction: row;
     width: 100%;
 
-    @media (max-width: 1001px) {
-      display: none;
-    }
+
   `,
   Main:styled.div`
     width: 100%;

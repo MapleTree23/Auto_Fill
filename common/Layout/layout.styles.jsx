@@ -16,8 +16,11 @@ export const Style = {
       min-height: 100vh;
     }
 
-    @media (max-width: 1001px) {
-      display: none;
-    }
+   
   `,
 };
+/**
+ *  @media (max-width: 1001px) {
+      display: none;
+    }
+ */
