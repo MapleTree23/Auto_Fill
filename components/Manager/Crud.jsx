@@ -30,3 +30,9 @@ export async function getDaySchedule(currentDate){
     return result;
     //console.log(result)
 }
+export async function getItemList(){
+    let response = await axios.get('/api/manager/items')
+    let result = response.data.items;
+    //console.log(result)
+    return result;
+}

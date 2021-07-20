@@ -26,7 +26,7 @@ export const Style = {
     Input:styled.input`
         width:100%;
         min-width:300px;
-        border: 2px solid #a0a0a0;
+        border: 1px solid #a0a0a0;
         /*border-radius: 5px;*/
         height: 40px;
         /*padding: 10px;*/
@@ -38,7 +38,7 @@ export const Style = {
     Select:styled.select`
         width:100%;
         min-width:300px;
-        border: 2px solid #a0a0a0;
+        border: 1px solid #a0a0a0;
         /*border-radius: 5px;*/
         height: 40px;
         /*padding: 10px;*/

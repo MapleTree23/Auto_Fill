@@ -55,3 +55,7 @@
 .justify-space-around{
     justify-content: space-around;
 }
+.button{
+    cursor: pointer;
+    
+}
