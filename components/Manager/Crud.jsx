@@ -78,7 +78,7 @@ export async function SaveNewItemList(newItemList){
 /**SHIF */
 export async function SaveShift(shift)
 {
-    console.log(shift)
+    //console.log(shift)
     let result = await axios.post(`/api/manager/shifts/post`,{
         params:{
             shift:shift
@@ -87,6 +87,16 @@ export async function SaveShift(shift)
     return result.data.result.insertId
 }
 /**Shif------ */
+export async function SaveTimeBreak(shift_id,timebreaks){
+    console.log(timebreaks)
+    let result = await axios.post(`/api/manager/timebreaks/post`,{
+        params:{
+            shift_id:shift_id,
+            timebreaks:timebreaks
+        }
+    })
+    return result.data
+}
 /**TotalInfo */
 export async function SaveTotalInfo(totalList){
     let result = await axios.post(`/api/manager/post`,{

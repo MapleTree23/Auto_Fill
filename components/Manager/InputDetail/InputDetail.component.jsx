@@ -168,6 +168,10 @@ function InputDetail({
         /**Shift */
         let shift_id = await Crud.SaveShift(personInfo);
         /**--Shift */
+        /**Timebreak */
+        let timeBreakResult = await Crud.SaveTimeBreak(shift_id,personInfo.timebreaks)
+        console.log(timeBreakResult)
+        /**---Timebreak */
         /**total */
 
         let totalList = [];
