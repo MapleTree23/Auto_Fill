@@ -33,21 +33,7 @@ function PreDetail({
         completedList,
         setCompletedList
     }){
-    //const [currentDate,setCurrentDate] = useState("")
-    const [department,setDepartment] = useState([
-        // {
-        //     name:'Fluffer',
-        //     roles:[]
-        // },
-        // {
-        //     name:'Industrial',
-        //     roles:[]
-        // },
-        // {
-        //     name:'Production',
-        //     roles:[]
-        // },
-    ])
+    const [department,setDepartment] = useState([])
     const [currentDepartmentName,setCurrentDepartmentName] = useState("")
     const [roleList,setRoleList] = useState([])
     const [currentRoleName,setCurrentRoleName] = useState("")
@@ -83,6 +69,10 @@ function PreDetail({
             }
          
             setDepartment(deparmenttemp);
+
+            let completedListTemp = await Crud.getCompletedList(currentDate);
+            console.log(completedListTemp)
+            setCompletedList(completedListTemp)
         }
     },[currentDate])
 
@@ -254,7 +244,7 @@ function PreDetail({
                              </ManagerCompletedTableHeader>
                              {completedList.map((item,index)=>{
                                  return(
-                                    <ManagerCompletedTableRow>
+                                    <ManagerCompletedTableRow key={index}>
                                         <ManagerCompletedTableItem>{item.department}</ManagerCompletedTableItem>
                                         <ManagerCompletedTableItem>{item.role}</ManagerCompletedTableItem>
                                         <ManagerCompletedTableItem>{`${item.first_name} ${item.last_name}`}</ManagerCompletedTableItem>

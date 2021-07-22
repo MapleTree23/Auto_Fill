@@ -36,6 +36,14 @@ export async function getItemInfoList(){
     //console.log(result)
     return result;
 }
+export async function getCompletedList(cdate){
+    let result = await axios.get('/api/manager/shifts/get',{
+        params:{
+            cdate:cdate
+        }
+    })
+    return result.data.completed
+}
 /**TASK */
 export function getTaskList(){
     return axios.get(`/api/manager/task/get`)

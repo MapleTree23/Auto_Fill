@@ -53,6 +53,7 @@ function InputDetail({
     const [isItemNameValid,setIsItemNameValid] = useState(true)
     const [isItemColorValid,setIsItemColorValid] = useState(true)
 
+    const [isSaving,setIsSaving] = useState(false)
     const change = (e) =>{
         
         let temp = {...tempRow}
@@ -90,10 +91,15 @@ function InputDetail({
 
     const addNewRow = () =>{
         console.log(tempRow)
+        if(isSaving){
+            alert("Saving now")
+            return
+        }
         if(tempRow.task == "" || !isItemNameValid || !isItemColorValid || tempRow.start == "" || tempRow.end == "" || !tempRow.qty){
             alert("Invalid Input")
             return
         }
+
         /*TaskPart */
         if(taskOriginList.filter((task)=>task.task_name == tempRow.task).length == 0){
             if(taskNewList.filter(task=>task == tempRow.task).length == 0){
@@ -124,7 +130,11 @@ function InputDetail({
             alert("You need to input at least 1")
             return
         }
-            
+        if(isSaving){
+            alert("Saving now")
+            return
+        }
+        setIsSaving(true)
         /**TASK */
         let existTaskList = await Crud.SaveNewTask(taskNewList,taskOriginList)
         
@@ -180,6 +190,7 @@ function InputDetail({
         }
         let totalResult = await Crud.SaveTotalInfo(totalList)
         console.log("totalResult:",totalResult)
+        setIsSaving(false)
         
         setCompletedList([
             ...completedList,
