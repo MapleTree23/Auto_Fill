@@ -12,12 +12,18 @@ import {Container} from '../../Utils/Container'
 function Manager(){
     const [currentStep,setCurrentStep] = useState(StepName.CreateDay);
     const [currentDate,setCurrentDate] = useState(Date.now())
-    const [cinfo,setCinfo] = useState({})
-    const startInput = (info) =>{
-        console.log(info)
-        setCinfo(info)
+    const [currentPersonInfo,setCurrentPersonInfo] = useState({})
+    const [completedList,setCompletedList] = useState([])
+
+    useEffect(()=>{
+        setCompletedList([])
+    },[currentDate])
+    const startInput = (pinfo) =>{
+        //console.log(pinfo)
+        setCurrentPersonInfo(pinfo)
         setCurrentStep(StepName.InputInfo);
     }
+    
     return(
         <div>
             <Layout>
@@ -27,10 +33,22 @@ function Manager(){
                             <CreateDay setCurrentDate={setCurrentDate} setCurrentStep={setCurrentStep}/>
                         )}
                         {currentStep == StepName.SelectPerson && (
-                            <PreDetail startInput={startInput} currentDate={currentDate} setCurrentStep={setCurrentStep}/>
+                            <PreDetail 
+                                startInput={startInput} 
+                                currentDate={currentDate} 
+                                setCurrentStep={setCurrentStep}
+                                completedList = {completedList}
+                                setCompletedList={setCompletedList}
+                            />
                         )}
                         {currentStep == StepName.InputInfo && (
-                            <InputDetail info={cinfo} setCurrentStep={setCurrentStep}/>
+                            <InputDetail 
+                                personInfo={currentPersonInfo} 
+                                setCurrentStep={setCurrentStep}
+                                completedList = {completedList}
+                                setCompletedList={setCompletedList}
+                            />
+
                         )}
                         {/* <a href="/">ABCD</a> */}
                     {/* </Style.Content>

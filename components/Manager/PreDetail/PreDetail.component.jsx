@@ -17,11 +17,22 @@ import {
     HumanInfoPart,
     HumanAvatar,
     HumanAvatarName,
-    ActionPart
+    HumanCompletedSpan,
+    ActionPart,
+    ManagerCompletedTable,
+    ManagerCompletedTableHeader,
+    ManagerCompletedTableItem,
+    ManagerCompletedTableRow
 } from '../../../Utils/ManagerPage'
 import {StepName} from '../Constant'
 
-function PreDetail({startInput,currentDate,setCurrentStep}){
+function PreDetail({
+        startInput,
+        currentDate,
+        setCurrentStep,
+        completedList,
+        setCompletedList
+    }){
     //const [currentDate,setCurrentDate] = useState("")
     const [department,setDepartment] = useState([
         // {
@@ -46,6 +57,8 @@ function PreDetail({startInput,currentDate,setCurrentStep}){
     const [currentPerson,setCurrentPerson] = useState({})
 
    
+    const [isCompleted,setIsCompleted] = useState(false)
+
     useEffect(async ()=>{
         //console.log(currentDate)
         if(currentDate != ""){
@@ -120,6 +133,13 @@ function PreDetail({startInput,currentDate,setCurrentStep}){
             let currnetPersonTemp = personList.filter(person=> `${person.first_name}_${person.last_name}` == currentPersonName)[0]
             // console.log(currnetPersonTemp)
             setCurrentPerson(currnetPersonTemp)
+            
+            if(completedList.filter(person=>`${person.first_name}_${person.last_name}` == currentPersonName).length == 0){
+                setIsCompleted(false)
+            }else
+            {
+                setIsCompleted(true)
+            }
         }
     },[currentPersonName])
     return(
@@ -172,6 +192,7 @@ function PreDetail({startInput,currentDate,setCurrentStep}){
                                 value={currentPersonName}
                                 onChange={(e) => {
                                     setCurrentPersonName(e.target.value);
+                                   
                                 }}
                             >
                                 {personList.map((person,index)=>{
@@ -186,6 +207,11 @@ function PreDetail({startInput,currentDate,setCurrentStep}){
                         <HumanAvatar src="/human.png"/>
                         <HumanAvatarName>
                             {currentPersonName}
+                            {isCompleted && (
+                                <HumanCompletedSpan>
+                                {` (Completed)`}
+                                </HumanCompletedSpan>
+                            )}
                         </HumanAvatarName>
                     </HumanInfoPart>
                 </div>
@@ -199,14 +225,47 @@ function PreDetail({startInput,currentDate,setCurrentStep}){
                     <StyledButton2 style={{minWidth:'150px'}} onClick={()=>{
                             if(currentPersonName != "")
                             {
-                                startInput(currentPerson)
+                                if(!isCompleted){
+                                    /*
+                                    setCompletedList([
+                                        ...completedList,
+                                        currentPerson
+                                    ])
+                                    */
+                                    startInput(currentPerson)
+                                }else{
+                                    alert("He is already completed")
+                                }                            
                             }else{
                                 alert("Select Person")
                             }
                         }}>Start</StyledButton2>
                 </div>
             </ManagerScreenRow>
-
+            {
+                completedList.length > 0 && (
+                    <ManagerScreenRow>
+                        <h2>Completed</h2>
+                        <ManagerCompletedTable>
+                            <ManagerCompletedTableHeader>
+                                <ManagerCompletedTableItem>Department</ManagerCompletedTableItem>
+                                <ManagerCompletedTableItem>Role</ManagerCompletedTableItem>
+                                <ManagerCompletedTableItem>Person</ManagerCompletedTableItem>
+                             </ManagerCompletedTableHeader>
+                             {completedList.map((item,index)=>{
+                                 return(
+                                    <ManagerCompletedTableRow>
+                                        <ManagerCompletedTableItem>{item.department}</ManagerCompletedTableItem>
+                                        <ManagerCompletedTableItem>{item.role}</ManagerCompletedTableItem>
+                                        <ManagerCompletedTableItem>{`${item.first_name} ${item.last_name}`}</ManagerCompletedTableItem>
+                                    </ManagerCompletedTableRow>
+                                 )
+                             })}
+                        </ManagerCompletedTable>
+                    </ManagerScreenRow>            
+                )
+            }
+            
         </ScreenCenterDiv>
     )
 }
