@@ -13,6 +13,7 @@ import {
 } from '../../../Utils/ManagerPage'
 const getCurrentDate = ()=>{
     let cDate = new Date();
+    cDate.setDate(cDate.getDate()-1)
     let mon = cDate.getMonth() + 1;
     let day = cDate.getDate();
     if(mon < 10){
@@ -37,8 +38,24 @@ function CreateDay({setCurrentDate,setCurrentStep}){
                     style={{maxWidth:'15rem'}}
                     value={cdate}
                     onChange={(e)=>{
-                        console.log(e.target.value)
-                        setCdate(e.target.value)
+                     
+                        let selDate = new Date(e.target.value)
+                        let nowDate = new Date()
+                     
+                        selDate.setHours(0)
+                        selDate.setMinutes(0)
+                        selDate.setSeconds(0)
+                        selDate.setMilliseconds(0)
+
+                        nowDate.setHours(0)
+                        nowDate.setMinutes(0)
+                        nowDate.setSeconds(0)
+                        nowDate.setMilliseconds(0)
+                        if(selDate < nowDate)
+                        {
+                            setCdate(e.target.value)
+                        }
+                        
 
                     }}
                 ></StyledInput>

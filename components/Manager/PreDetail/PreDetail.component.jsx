@@ -69,7 +69,7 @@ function PreDetail({
             }
          
             setDepartment(deparmenttemp);
-
+            console.log(deparmenttemp)
             let completedListTemp = await Crud.getCompletedList(currentDate);
             console.log(completedListTemp)
             setCompletedList(completedListTemp)
