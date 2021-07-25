@@ -72,8 +72,23 @@ const MEDIA_WIDTHS = {
     bg105:darkMode ? '#2be978' : 'black',
     modalBackground:darkMode ? '#0b0b0baa' : 'black',
 
+    bg201:darkMode ? '#021309' : 'black',
+    bg202:darkMode ? '#2be978' : 'black',
+    bg203:darkMode ? '#150404' : 'black',
+
+    bgdisable:darkMode ? '#171717' : 'black',
+
     
     outLine1:darkMode ? '#393939' : 'black',
+
+    outline201:darkMode ? '#94febf' : 'black',
+    outline202:darkMode ? '#94febf' : 'black',
+    outline203:darkMode ? '#ff7e7e' : 'black',
+
+    outlinedisable:darkMode ? '#5f5f5f' : 'black',
+
+
+
     //specialty colors
     modalBG: darkMode ? 'rgba(0,0,0,0.85)' : 'rgba(0,0,0,0.6)',
     advancedBG: darkMode ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.4)',

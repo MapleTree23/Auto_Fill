@@ -90,7 +90,7 @@ function InputDetail({
     },[])
 
     const addNewRow = () =>{
-        console.log(tempRow)
+        //console.log(tempRow)
         if(isSaving){
             alert("Saving now")
             return

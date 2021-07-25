@@ -1,18 +1,20 @@
 //import '../styles/globals.css'
 import React from "react";
-import { Provider } from "react-redux";
 import ThemeProvider,{GlobalStyle} from "../styles/GlobalStyle";
-import styled from "styled-components";
 import "./_app.css";
+import { Provider } from "react-redux"
+import store from "../store";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider>
-    <>
-      <GlobalStyle/>
-      <Component {...pageProps} />
-    </>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider>
+      <>
+        <GlobalStyle/>
+        <Component {...pageProps} />
+      </>
+      </ThemeProvider>
+    </Provider>
   )
 }
 

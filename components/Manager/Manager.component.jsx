@@ -27,32 +27,27 @@ function Manager(){
     return(
         <div>
             <Layout>
-                {/* <Style.Main>
-                    <Style.Content> */}
-                        {currentStep == StepName.CreateDay && (
-                            <CreateDay setCurrentDate={setCurrentDate} setCurrentStep={setCurrentStep}/>
-                        )}
-                        {currentStep == StepName.SelectPerson && (
-                            <PreDetail 
-                                startInput={startInput} 
-                                currentDate={currentDate} 
-                                setCurrentStep={setCurrentStep}
-                                completedList = {completedList}
-                                setCompletedList={setCompletedList}
-                            />
-                        )}
-                        {currentStep == StepName.InputInfo && (
-                            <InputDetail 
-                                personInfo={currentPersonInfo} 
-                                setCurrentStep={setCurrentStep}
-                                completedList = {completedList}
-                                setCompletedList={setCompletedList}
-                            />
+                {currentStep == StepName.CreateDay && (
+                    <CreateDay setCurrentDate={setCurrentDate} setCurrentStep={setCurrentStep}/>
+                )}
+                {currentStep == StepName.SelectPerson && (
+                    <PreDetail 
+                        startInput={startInput} 
+                        currentDate={currentDate} 
+                        setCurrentStep={setCurrentStep}
+                        completedList = {completedList}
+                        setCompletedList={setCompletedList}
+                    />
+                )}
+                {currentStep == StepName.InputInfo && (
+                    <InputDetail 
+                        personInfo={currentPersonInfo} 
+                        setCurrentStep={setCurrentStep}
+                        completedList = {completedList}
+                        setCompletedList={setCompletedList}
+                    />
 
-                        )}
-                        {/* <a href="/">ABCD</a> */}
-                    {/* </Style.Content>
-                </Style.Main> */}
+                )}
             </Layout>
         </div>
     )

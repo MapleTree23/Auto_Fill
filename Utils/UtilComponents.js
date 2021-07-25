@@ -8,6 +8,15 @@ export const Col = styled.div`
 export const MainSection = styled.div`
     margin:3rem 0px 3rem 0px;
 `
+export const AuthSection = styled.div`
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border: 1px solid #245a40;
+    padding: 2rem;
+`
 export const ScreenCenterDiv = styled.div`
     text-align:center;
 `
@@ -47,19 +56,23 @@ export const StyledButton = styled.div`
     }
 `
 export const StyledButton2 = styled.div`
-    background-color: ${({ theme }) => (theme.bg100 )};
-    color:${({ theme }) => (theme.text10 )};
-    border:1px solid  ${({ theme }) => (theme.bg101 )};
+    background-color: ${({ theme,disable }) => (disable ? theme.bgdisable: theme.bg100 )};
+    color:${({ theme,disable }) => (disable ? theme.outlinedisable : theme.text10 )};
+    border:1px solid  ${({ theme,disable }) => (disable ? theme.outlinedisable: theme.bg101 )};
     border-radius:1px;
     padding:.7rem;
     text-align:center;
-    cursor:pointer;
-    :hover{
-        background-color: ${({ theme }) => (theme.bg103 )};
-    }
+
+    ${({disable})=>!disable && `
+        cursor:pointer;
+        :hover{
+            background-color: ${({ theme }) => (theme.bg103 )};
+        };
+    `}
+    ${({disable})=>disable && `
+        pointer-events: none;
+    `}
 `
-
-
 
 export const InfoSpan = styled.span`
     background-color: ${({ theme }) => (theme.bg101 )};
