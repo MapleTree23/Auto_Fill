@@ -4,3 +4,22 @@ export const AlertMsgStatus = {
     info:"info",
     null:"null"
 }
+
+export const MenuListByRole = [
+    [
+        {
+            url:'/input',
+            menuname:'Input'
+        },
+    ],
+    [
+        {
+            url:'/input',
+            menuname:'Input'
+        },
+        {
+            url:'/user',
+            menuname:'User'
+        },
+    ]
+]

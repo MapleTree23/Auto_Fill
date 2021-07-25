@@ -1,5 +1,9 @@
 import React,{useState,useEffect,useMemo} from "react"
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import axios from 'axios'
+import Alert from "../../UIUtils/Alert";
+import { AlertMsgStatus } from "../../Utils/constant";
 
 import {
     StyledButton2,
@@ -14,14 +18,41 @@ import {
 } from "../../Utils/AuthPageContent"
 import AuthLayout from "../../common/AuthLayout/authlayout.component"
 
+import { setUser } from "../../store/Slice/auth.slice";
+
 function Login(){
     const router = useRouter();
+    const dispatch = useDispatch();
+
     const [userName,setUserName] = useState("")
     const [password,setPassword] = useState("")
     const [isLogging,setIsLogging] = useState(false)
     const [success,setSuccess] = useState(AlertMsgStatus.null)
     const [msg,setMsg] = useState("");
     
+    const login = async() => {
+        let result  = await axios.get("/api/auth/get",{
+            params:{
+                username:userName,
+                password:password
+            }
+        })
+        if(result.data.result){
+            dispatch(setUser(result.data.user))
+            router.push("/")
+        }else{
+            setSuccess(AlertMsgStatus.error)
+            if(result.data.reason == "pwd")
+            {
+                setMsg("Password Incorrect")
+            }
+            if(result.data.reason == "sign")
+            {
+                setMsg("User not found")
+            }
+        }
+        console.log(result.data)
+    }
     return(
         <AuthLayout>
             <AuthTitle>
@@ -42,11 +73,12 @@ function Login(){
                 </StyleInputLabel>
                 <StyledInput type="password" value={password} onChange={e=>setPassword(e.target.value)}/>
             </StyledInputItem>
+            <Alert success={success} msg={msg}/>
+
             <StyledButton2 
                 style={{marginTop:'2rem'}}
-                onClick={()=>{
-                    
-                }}
+                onClick={login}
+                disable={false}
             >Login</StyledButton2>
         </AuthLayout>
     )

@@ -4,17 +4,18 @@ import bcrypt from 'bcrypt';
 const saltRound = 10;
 export default async function handler(req,res){
     try{
-        console.log(bcrypt)
+        //console.log(bcrypt)
         const {username,password} = req.body.params;
         
         let hash = await bcrypt.hashSync(password,saltRound)
         console.log(hash)
         let values = `('${username}','${hash}',0,0)`
 
-        const result = await executeQuery({
-            query:`INSERT INTO users (username,password,role) VALUES ${values}`
-        })
         
+        const result = await executeQuery({
+            query:`INSERT INTO users (username,password,role,accept) VALUES ${values}`
+        })
+        console.log(result)
         if(result.error){
             res.status(200).json({ result: "fail"})
         }

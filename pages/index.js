@@ -7,14 +7,15 @@ import { useSelector } from "react-redux"
 
 export default function Home() {
   const router = useRouter();
-  const user = useSelector((state)=>state.auth)
-  const {username} = user;
+  const userauth = useSelector((state)=>state.auth)
+  const {user} = userauth;
+  
 
   useEffect(()=>{
-    if(!username){
+    if(!user.username){
       router.push("/login");
     }else{
-      router.push("/manager")
+      router.push("/input")
     }
     
   },[])
