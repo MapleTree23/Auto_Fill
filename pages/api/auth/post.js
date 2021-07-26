@@ -13,7 +13,7 @@ export default async function handler(req,res){
 
         
         const result = await executeQuery({
-            query:`INSERT INTO users (username,password,role,accept) VALUES ${values}`
+            query:`INSERT INTO users (username,password,role,allow) VALUES ${values}`
         })
         console.log(result)
         if(result.error){

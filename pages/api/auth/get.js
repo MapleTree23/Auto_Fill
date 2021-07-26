@@ -5,10 +5,10 @@ export default async function handler(req,res){
     try{
      //   console.log(bcrypt)
         const {username,password} = req.query;
-        
+        console.log(username)
 
         const result = await executeQuery({
-            query:`SELECT * FROM users WHERE username='${username}' AND accept=1`
+            query:`SELECT * FROM users WHERE username='${username}' AND allow=1`
         })
         if(result.length){
             if(bcrypt.compareSync(password,result[0].password)){

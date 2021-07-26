@@ -73,6 +73,26 @@ export const StyledButton2 = styled.div`
         pointer-events: none;
     `}
 `
+export const OkayButton = styled.div`
+    background-color: ${({ theme,disable }) => (disable ? theme.bgdisable: theme.bg100 )};
+    color:${({ theme,disable }) => (disable ? theme.outlinedisable : theme.text10 )};
+    border:1px solid  ${({ theme,disable }) => (disable ? theme.outlinedisable: theme.bg101 )};
+    border-radius:1px;
+    padding:.7rem;
+    text-align:center;
+    cursor:pointer;
+`
+
+export const ErrorButton = styled.div`
+    background-color: ${({ theme,disable }) => (disable ? theme.bgdisable: theme.bg203 )};
+    color:${({ theme,disable }) => (disable ? theme.outlinedisable : theme.outline203 )};
+    border:1px solid  ${({ theme,disable }) => (disable ? theme.outlinedisable: theme.outline203 )};
+    border-radius:1px;
+    padding:.7rem;
+    text-align:center;
+    cursor:pointer;
+
+`
 
 export const InfoSpan = styled.span`
     background-color: ${({ theme }) => (theme.bg101 )};
@@ -100,8 +120,9 @@ export const StyledInputItem = styled.div`
     place-items: center;
 `
 export const StyleInputLabel = styled.div`
-    align-self: center;
+    // align-self: center;
     min-width: 200px;
+    text-align:left;
 `
 export const StyledInput = styled.input`
     padding: .7rem .7rem;

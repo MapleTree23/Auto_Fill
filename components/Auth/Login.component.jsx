@@ -51,7 +51,6 @@ function Login(){
                 setMsg("User not found")
             }
         }
-        console.log(result.data)
     }
     return(
         <AuthLayout>

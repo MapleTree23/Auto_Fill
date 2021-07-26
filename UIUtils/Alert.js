@@ -18,14 +18,14 @@ const AlertBoxDiv = styled.div`
         theme.bg203
     };
 `
-const Alert = ({success,msg})=>{
+const Alert = ({success,msg,...props})=>{
     if(success == AlertMsgStatus.null){
         return (
             <></>
         )
     }else{
         return (
-            <AlertBoxDiv status={success}>
+            <AlertBoxDiv status={success} {...props}>
                 {msg}
             </AlertBoxDiv>
         )
